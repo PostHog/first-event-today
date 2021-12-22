@@ -2,14 +2,14 @@
   "name": "First Event Today",
   "url": "https://github.com/PostHog/first-event-today",
   "description": "Track if a given event is the first event of this type for a user today.",
-  "main": "index.js",
+  "main": "index.ts",
   "config": [
     {
       "key": "events",
       "name": "List of events to track first time occurences on:",
       "type": "string",
       "default": "",
-      "hint": "Separate events with commas, without using spaces, like so: `event1,event2,event3`. Leave blank to track all events.",
+      "hint": "Separate events with commas, like so: `$pageview, custom event, event3`. Leave blank to track all events.",
       "required": false
     },
     {
