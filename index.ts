@@ -29,11 +29,7 @@ export async function processEvent(event, meta) {
 async function setIfNotCached({ cache, storage }, key: string, callback: () => void): void {
     // first time we see this event in redis in the last 24h
     if ((await cache.incr(key)) === 1) {
-        // double check with persistent storage that we truly are seeing it for the first time
-        if (!(await storage.get(key))) {
-            callback?.()
-            await storage.set(key, true)
-            await cache.expire(key, 86400)
-        }
+        callback?.()
+        await cache.expire(key, 86400)
     }
 }
